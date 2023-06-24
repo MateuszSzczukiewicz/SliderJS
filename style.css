@@ -25,52 +25,32 @@
     position: absolute;
 }
 
-.slider__left-button {
+.slider__button {
     position: absolute;
+    border: none;
     height: 50px;
     width: 50px;
     background-color: #41b883;
     font-size: 100px;
+    top: 75%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.slider__button:hover {
+    background-color: green;
+}
+
+.slider__button--left {
     left: 0;
-    top: 75%;
-    transform: translate(0, -50%);
-    cursor: pointer;
-    transition: 0.2s;
 }
 
-.slider__left-button:hover {
-    background-color: green;
-}
-
-.slider__left-arrow {
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    border-bottom: 2px solid white;
-    border-right: 2px solid white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-25%, -50%) rotate(135deg);
-}
-
-.slider__right-button {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    background-color: #41b883;
-    font-size: 100px;
+.slider__button--right {
     right: 0;
-    top: 75%;
-    transform: translate(0, -50%);
-    cursor: pointer;
-    transition: 0.2s;
 }
 
-.slider__right-button:hover {
-    background-color: green;
-}
-
-.slider__right-arrow {
+.slider__arrow {
     position: absolute;
     height: 20px;
     width: 20px;
@@ -78,7 +58,14 @@
     border-left: 2px solid white;
     top: 50%;
     left: 50%;
+}
+
+.slider__arrow--right {
     transform: translate(-75%, -50%) rotate(135deg);
+}
+
+.slider__arrow--left {
+    transform: translate(-25%, -50%) rotate(315deg);
 }
 
 .slider__caption {
