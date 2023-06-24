@@ -82,4 +82,9 @@
 }
 
 .slider__caption {
+    position: absolute;
+    font-size: 25px;
+    font-family: Lato, sans-serif;
+    top: 100%;
+    margin-top: 5px;
 }
