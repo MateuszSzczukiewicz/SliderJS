@@ -1,9 +1,9 @@
 class Slider {
   constructor() {
-    this.leftButton = document.querySelector(".slider__button--left");
-    this.rightButton = document.querySelector(".slider__button--right");
-    this.slider = document.querySelector(".slider");
-    this.caption = document.querySelector(".slider__caption");
+    this.leftButton = document.getElementById("slider-button-left");
+    this.rightButton = document.getElementById("slider-button-right");
+    this.slider = document.getElementById("slider");
+    this.caption = document.getElementById("slider-caption");
 
     this.images = [
       "img/img1.jpg",
