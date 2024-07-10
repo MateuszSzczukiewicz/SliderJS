@@ -1,30 +1,41 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+	<main class="slider">
+		<BaseSlide />
+	</main>
 </template>
 
+<script>
+import BaseSlide from '@/components/organisms/BaseSlide.vue';
+
+export default {
+	name: 'App',
+	components: {
+		BaseSlide,
+	},
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: 'Lato', sans-serif;
+	box-sizing: border-box;
+}
+.slider {
+	display: flex;
+	align-items: center;
+	position: relative;
+	width: 1140px;
+	margin-right: auto;
+	margin-left: auto;
 }
 </style>
