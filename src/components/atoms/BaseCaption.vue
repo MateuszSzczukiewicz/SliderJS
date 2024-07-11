@@ -1,10 +1,16 @@
 <template>
-	<figcaption class="caption">1/10</figcaption>
+	<figcaption class="caption">{{ text }}</figcaption>
 </template>
 
 <script>
 export default {
 	name: 'BaseCaption',
+	props: {
+		text: {
+			type: String,
+			default: '',
+		},
+	},
 };
 </script>
 
