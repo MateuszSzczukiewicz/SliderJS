@@ -2,8 +2,10 @@
 	<figcaption class="caption">{{ text }}</figcaption>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
 	name: 'BaseCaption',
 	props: {
 		text: {
@@ -11,7 +13,7 @@ export default {
 			default: '',
 		},
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped>

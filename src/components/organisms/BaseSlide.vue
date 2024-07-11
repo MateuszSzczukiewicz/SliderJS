@@ -8,14 +8,22 @@
 	/>
 </template>
 
-<script>
-import BaseImage from '@/components/molecules/BaseImage.vue';
-import ArrowButton from '../atoms/ArrowButton.vue';
-import ArrowButton from '../atoms/ArrowButton.vue';
-import { onMounted, onUnmounted } from 'vue';
+<script lang="ts">
+import {
+	defineComponent,
+	onMounted,
+	onUnmounted,
+	ref,
+	computed,
+	Ref,
+	ComputedRef,
+} from 'vue';
 import { useRouter } from 'vue-router';
+import BaseImage from '@/components/molecules/BaseImage.vue';
+import ArrowButton from '@/components/atoms/ArrowButton.vue';
+import { getNumberOfImages } from '@/helpers/getNumberOfImages';
 
-export default {
+export default defineComponent({
 	name: 'BaseSlide',
 	components: {
 		BaseImage,
@@ -23,42 +31,43 @@ export default {
 	},
 	props: {
 		photoNumber: {
-			type: string,
+			type: String,
 			default: '1',
 		},
 	},
 	setup(props) {
 		const { push } = useRouter();
-		const images = require.context('/src/assets', false, /^.*\.jpg$/);
+		const numberOfImages = getNumberOfImages();
 
-		const numberOfImages = images.keys().length;
-		const slideNumber = ref(+props.photoNumber);
+		const slideNumber: Ref<number> = ref(+props.photoNumber);
 
-		const isAbleToGoToPrevSlide = computed(() => slideNumber.value !== 1);
-		const isAbleToGoToNextSlide = computed(
+		const isAbleToGoToPrevSlide: ComputedRef<boolean> = computed(
+			() => slideNumber.value !== 1
+		);
+		const isAbleToGoToNextSlide: ComputedRef<boolean> = computed(
 			() => slideNumber.value !== numberOfImages
 		);
 
 		onMounted(() => document.addEventListener('keydown', handleKeyDown));
-
 		onUnmounted(() => document.removeEventListener('keydown', handleKeyDown));
 
-		function handleKeyDown({ keyCode }) {
-			if (keyCode === 37 && isAbleToGoToPrevSlide.value) {
+		function handleKeyDown(event: KeyboardEvent): void {
+			if (event.key === 'ArrowLeft' && isAbleToGoToPrevSlide.value) {
 				changeSlide(-1);
-			} else if (keyCode === 39 && isAbleToGoToNextSlide.value) {
+			} else if (event.key === 'ArrowRight' && isAbleToGoToNextSlide.value) {
 				changeSlide(1);
-				dsd;
 			}
 		}
 
-		function changeSlide(param) {
-			as;
+		function changeSlide(param: number): void {
 			slideNumber.value = slideNumber.value + param;
+			push(`/slide/${slideNumber.value}`);
 		}
 
-		const fileName = computed(() => `${slideNumber.value}.jpg`);
-		const captionText = computed(
+		const fileName: ComputedRef<string> = computed(
+			() => `${slideNumber.value}.jpg`
+		);
+		const captionText: ComputedRef<string> = computed(
 			() => `${slideNumber.value}/${numberOfImages}`
 		);
 
@@ -70,5 +79,5 @@ export default {
 			changeSlide,
 		};
 	},
-};
+});
 </script>

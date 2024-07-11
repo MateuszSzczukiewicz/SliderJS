@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="arrow-button arrow-button--prev"
+		class="arrow-button"
 		:class="{
 			'arrow-button--prev': !isNext,
 			'arrow-button--next': isNext,
@@ -9,8 +9,10 @@
 	></button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
 	name: 'ArrowButton',
 	prop: {
 		isNext: {
@@ -22,7 +24,7 @@ export default {
 			default: false,
 		},
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped>

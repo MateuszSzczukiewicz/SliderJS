@@ -5,10 +5,11 @@
 	</figure>
 </template>
 
-<script>
-import BaseCaption from '@/components/atoms/BaseCaption';
+<script lang="ts">
+import BaseCaption from '@/components/atoms/BaseCaption.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
 	name: 'BaseImage',
 	components: {
 		BaseCaption,
@@ -23,7 +24,7 @@ export default {
 			required: true,
 		},
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped>

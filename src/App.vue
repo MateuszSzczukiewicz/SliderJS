@@ -4,9 +4,7 @@
 	</main>
 </template>
 
-<script>
-import BaseSlide from '@/components/organisms/BaseSlide.vue';
-
+<script lang="ts">
 export default {
 	name: 'App',
 };
