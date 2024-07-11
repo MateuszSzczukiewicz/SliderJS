@@ -14,7 +14,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
 	name: 'ArrowButton',
-	prop: {
+	props: {
 		isNext: {
 			type: Boolean,
 			default: false,
