@@ -1,6 +1,6 @@
 <template>
 	<main class="slider">
-		<BaseSlide />
+		<router-view />
 	</main>
 </template>
 
@@ -9,9 +9,6 @@ import BaseSlide from '@/components/organisms/BaseSlide.vue';
 
 export default {
 	name: 'App',
-	components: {
-		BaseSlide,
-	},
 };
 </script>
 

@@ -1,13 +1,19 @@
 <template>
-	<ArrowButton @click="changeSlide()" :is-disabled="!isAbleToGoToPrevSlide" />
+	<ArrowButton @click="changeSlide(-1)" :is-disabled="!isAbleToGoToPrevSlide" />
 	<BaseImage :file-name="fileName" :caption-text="captionText" />
-	<ArrowButton :is-disabled="!isAbleToGoToNextSlide" is-next />
+	<ArrowButton
+		@click="changeSlide(1)"
+		:is-disabled="!isAbleToGoToNextSlide"
+		is-next
+	/>
 </template>
 
 <script>
 import BaseImage from '@/components/molecules/BaseImage.vue';
 import ArrowButton from '../atoms/ArrowButton.vue';
 import ArrowButton from '../atoms/ArrowButton.vue';
+import { onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
 	name: 'BaseSlide',
@@ -22,6 +28,7 @@ export default {
 		},
 	},
 	setup(props) {
+		const { push } = useRouter();
 		const images = require.context('/src/assets', false, /^.*\.jpg$/);
 
 		const numberOfImages = images.keys().length;
@@ -32,7 +39,21 @@ export default {
 			() => slideNumber.value !== numberOfImages
 		);
 
+		onMounted(() => document.addEventListener('keydown', handleKeyDown));
+
+		onUnmounted(() => document.removeEventListener('keydown', handleKeyDown));
+
+		function handleKeyDown({ keyCode }) {
+			if (keyCode === 37 && isAbleToGoToPrevSlide.value) {
+				changeSlide(-1);
+			} else if (keyCode === 39 && isAbleToGoToNextSlide.value) {
+				changeSlide(1);
+				dsd;
+			}
+		}
+
 		function changeSlide(param) {
+			as;
 			slideNumber.value = slideNumber.value + param;
 		}
 
@@ -46,6 +67,7 @@ export default {
 			isAbleToGoToNextSlide,
 			fileName,
 			captionText,
+			changeSlide,
 		};
 	},
 };
